@@ -10,16 +10,16 @@ namespace SXBWebApi.Controllers
 {
     public class SYS_USERController : ApiController
     {
-        // GET: api/SYS_USER
-        public IEnumerable<SYS_USER> Get()
-        {
-            return users.ToList();
-        }
+        //// GET: api/SYS_USER
+        //public IEnumerable<SYS_USER> Get()
+        //{
+        //    return users.ToList();
+        //}
 
         // GET: api/SYS_USER/5
-        public SYS_USER Get(string id = null)
+        public IEnumerable<SYS_USER> Get(string id = null)
         {
-            return users.Where(p => id == null || p.ROW_ID.Equals(id)).FirstOrDefault(); ;
+            return users.Where(p => id == null || p.ROW_ID.Equals(id)).ToList() ;
         }
 
         // POST: api/SYS_USER

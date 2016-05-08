@@ -45,7 +45,7 @@ namespace SXB.ICommonCLR
         #endregion
 
         /// <summary>
-        /// get方式调用 webapi
+        /// GET
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="url"></param>
@@ -55,10 +55,25 @@ namespace SXB.ICommonCLR
         {
             HttpClient httpclient = new HttpClient();
             HttpResponseMessage response = await httpclient.GetAsync(url);
-            response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-
             return JsonConvert.DeserializeObject<T>(responseBody);
+        }
+
+        /// <summary>
+        /// POST 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static async Task<T> Post<T>(string url,IDictionary<string,object> data=null)
+        {
+            using (HttpClient httpclient = new HttpClient())
+            {
+                HttpResponseMessage response = await httpclient.PostAsync(url, new StringContent(CreateDataJson(data)));
+                string responseBody = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(responseBody);
+            }
         }
     }
 }

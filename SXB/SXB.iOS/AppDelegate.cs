@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using SXB.ICommonCLR;
 
 namespace SXB.iOS
 {
@@ -26,6 +27,19 @@ namespace SXB.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        static DataAccess dbUtils;
+        public static DataAccess DAUtil
+        {
+            get
+            {
+                if (dbUtils == null)
+                {
+                    dbUtils = new DataAccess();
+                }
+                return dbUtils;
+            }
         }
     }
 }

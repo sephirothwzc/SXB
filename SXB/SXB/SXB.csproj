@@ -36,9 +36,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="ICommonCLR\DataAccess.cs" />
+    <Compile Include="ICommonCLR\ISQLite.cs" />
     <Compile Include="ICommonCLR\XHttpClient.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\NotifyPropertyChangedBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLiteDemo\AddEmployee.xaml.cs">
+      <DependentUpon>AddEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SQLiteDemo\EditEmployee.xaml.cs">
+      <DependentUpon>EditEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SQLiteDemo\ManageEmployee.xaml.cs">
+      <DependentUpon>ManageEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SQLiteDemo\ShowEmplyee.xaml.cs">
+      <DependentUpon>ShowEmplyee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\BooleanNegationConverter.cs" />
     <Compile Include="ViewModel\Pages\PageViewModel.cs" />
     <Compile Include="ViewModel\Pages\SYS_USERS_PageModel.cs" />
@@ -56,6 +71,10 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SXBModels">
@@ -86,13 +105,36 @@
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="SQLiteDemo\ManageEmployee.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\Pages\SYSUSERS_Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Pages\SYSUSER_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQLiteDemo\AddEmployee.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQLiteDemo\ShowEmplyee.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQLiteDemo\EditEmployee.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
